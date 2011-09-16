@@ -1,0 +1,27 @@
+# intended for out-of-source build,
+# gen makefiles and eclipse prj then build
+mkdir mtxgauge-debug; cd mtxgauge-debug
+cmake -G"Eclipse CDT4 - Unix Makefiles" ../mtxgauge
+make
+
+# fire up demo or step through w/eclipse via 
+# imported project generated previously
+./bin/demos/gauge-demo
+
+
+# why ?
+# 
+# I want to get some real-world experience of refactoring something completely
+# out of my comfort range and distill it down to a nice lib, and of course,
+# refactoring means lots of tests .. which I hope to get some feedback on.
+
+# for building experience on:
+#
+# linux dev (in general)
+# cmake, cdash, ctest
+# eclipse
+# gtk, gdk, cairo, et al.
+# refactoring
+# unit tests
+# gcc
+# doxygen

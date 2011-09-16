@@ -1,0 +1,1 @@
+PROJECT( mtxgauge-tests C )
