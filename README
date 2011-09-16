@@ -8,6 +8,10 @@ make
 # imported project generated previously
 ./bin/demos/gauge-demo
 
+# install
+libxml2-devel
+gtk2-devel
+cmake
 
 # why ?
 # 
