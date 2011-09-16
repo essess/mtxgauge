@@ -1,0 +1,3 @@
+# I'd like to have libmtxgauge.a:
+#	- not deposited into bin/lib/ and dropped into lib/ instead
+#	- generate a shared lib in addition to the static lib
