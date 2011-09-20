@@ -141,7 +141,7 @@ void mtx_gauge_face_export_xml(MtxGaugeFace * gauge, gchar * filename)
 	guint i = 0;
 	xmlDocPtr doc = NULL;       /* document pointer */
 	xmlNodePtr root_node = NULL;/* node pointers */
-	xmlDtdPtr dtd = NULL;       /* DTD pointer */
+/*	xmlDtdPtr dtd = NULL;    set, but unused */   /* DTD pointer */
 	MtxDispatchHelper *helper = NULL;
 	MtxXMLFuncs * xml_funcs = NULL;
 	MtxGaugeFacePrivate *priv = MTX_GAUGE_FACE_GET_PRIVATE(gauge);
@@ -157,8 +157,9 @@ void mtx_gauge_face_export_xml(MtxGaugeFace * gauge, gchar * filename)
 
 	/*
 	 * Creates a DTD declaration. Isn't mandatory.
-	 */
+	 
 	dtd = xmlCreateIntSubset(doc, BAD_CAST "gauge", NULL, BAD_CAST "mtxgauge.dtd");
+	 */
 
 	/* Create a helper struct o bind data to for to
 	 * trim up the XML export functions.

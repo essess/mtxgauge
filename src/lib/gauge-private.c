@@ -73,10 +73,10 @@ GType mtx_gauge_face_get_type(void)
  */
 void mtx_gauge_face_class_init (MtxGaugeFaceClass *class_name)
 {
-	GObjectClass *obj_class;
+/*	GObjectClass *obj_class;	unused */
 	GtkWidgetClass *widget_class;
 
-	obj_class = G_OBJECT_CLASS (class_name);
+/*	obj_class = G_OBJECT_CLASS (class_name); unused, but set */
 	widget_class = GTK_WIDGET_CLASS (class_name);
 
 	/* GtkWidget signals */
@@ -786,8 +786,8 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 	cairo_font_weight_t weight;
 	cairo_font_slant_t slant;
 	gchar * tmpbuf = NULL;
-	gint w = 0;
-	gint h = 0;
+/*	gint w = 0;		unused */
+/*	gint h = 0;		unused */
 	guint i = 0;
 	gint j = 0;
 	gint k = 0;
@@ -821,8 +821,10 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 	MtxTickGroup *tgroup = NULL;
 	MtxGaugeFacePrivate *priv = MTX_GAUGE_FACE_GET_PRIVATE(gauge);
 
+	/*   set, but unused
 	w = GTK_WIDGET(gauge)->allocation.width;
 	h = GTK_WIDGET(gauge)->allocation.height;
+	*/
 
 	if (!priv->bg_pixmap)
 		return;
