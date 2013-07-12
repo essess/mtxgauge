@@ -14,10 +14,8 @@ ADD_DEFINITIONS(
     -Wextra
     -Werror
     -Wunused
-#   -Wcast-qual     # cannot use because gthread.h is not complaint
     -Wmissing-prototypes
     -std=c99
-    -pedantic-errors
     )
 
 ADD_SUBDIRECTORY( src bin )
