@@ -267,22 +267,22 @@ void mtx_gauge_warning_range_import(MtxGaugeFace *gauge, xmlNode *node, gpointer
 	{
 		if (cur_node->type == XML_ELEMENT_NODE)
 		{
-			if (g_strcasecmp((gchar *)cur_node->name,"layer") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"layer",5) == 0)
 				mtx_gauge_gint_import(gauge, cur_node,&range->layer,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"lowpoint") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"lowpoint",8) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&range->lowpoint,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"highpoint") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"highpoint",9) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&range->highpoint,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"lwidth") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"lwidth",6) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&range->lwidth,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"inset") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"inset",5) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&range->inset,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"color_day") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color_day",8) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&range->color[MTX_DAY],api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"color_nite") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color_nite",9) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&range->color[MTX_NITE],api_compat);
 			/* API compat */
-			if (g_strcasecmp((gchar *)cur_node->name,"color") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color",5) == 0)
 			{
 				mtx_gauge_color_import(gauge, cur_node,&range->color[MTX_DAY],api_compat);
 				range->color[MTX_NITE] = range->color[MTX_DAY];
@@ -313,26 +313,26 @@ void mtx_gauge_alert_range_import(MtxGaugeFace *gauge, xmlNode *node, gpointer d
 	{
 		if (cur_node->type == XML_ELEMENT_NODE)
 		{
-			if (g_strcasecmp((gchar *)cur_node->name,"layer") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"layer",5) == 0)
 				mtx_gauge_gint_import(gauge, cur_node,&range->layer,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"lowpoint") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"lowpoint",8) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&range->lowpoint,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"highpoint") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"highpoint",9) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&range->highpoint,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"lwidth") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"lwidth",6) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&range->lwidth,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"inset") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"inset",5) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&range->inset,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"x_offset") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"x_offset",8) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&range->x_offset,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"y_offset") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"y_offset",8) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&range->y_offset,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"color_day") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color_day",9) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&range->color[MTX_DAY],api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"color_nite") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color_nite",8) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&range->color[MTX_NITE],api_compat);
 			/* API compat */
-			if (g_strcasecmp((gchar *)cur_node->name,"color") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color",5) == 0)
 			{
 				mtx_gauge_color_import(gauge, cur_node,&range->color[MTX_DAY],api_compat);
 				range->color[MTX_NITE] = range->color[MTX_DAY];
@@ -362,24 +362,24 @@ void mtx_gauge_text_block_import(MtxGaugeFace *gauge, xmlNode *node, gpointer de
 	{
 		if (cur_node->type == XML_ELEMENT_NODE)
 		{
-			if (g_strcasecmp((gchar *)cur_node->name,"layer") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"layer",5) == 0)
 				mtx_gauge_gint_import(gauge, cur_node,&tblock->layer,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"font") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"font",4) == 0)
 				mtx_gauge_gchar_import(gauge, cur_node,&tblock->font,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"text") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"text",4) == 0)
 				mtx_gauge_gchar_import(gauge, cur_node,&tblock->text,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"font_scale") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"font_scale",10) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tblock->font_scale,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"x_pos") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"x_pos",5) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tblock->x_pos,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"y_pos") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"y_pos",5) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tblock->y_pos,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"color_day") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color_day",9) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&tblock->color[MTX_DAY],api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"color_nite") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color_nite",10) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&tblock->color[MTX_NITE],api_compat);
 			/* API compat */
-			if (g_strcasecmp((gchar *)cur_node->name,"color") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color",5) == 0)
 			{
 				mtx_gauge_color_import(gauge, cur_node,&tblock->color[MTX_DAY],api_compat);
 				tblock->color[MTX_NITE] = tblock->color[MTX_DAY];
@@ -409,59 +409,59 @@ void mtx_gauge_tick_group_import(MtxGaugeFace *gauge, xmlNode *node, gpointer de
 	{
 		if (cur_node->type == XML_ELEMENT_NODE)
 		{
-			if (g_strcasecmp((gchar *)cur_node->name,"layer") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"layer",5) == 0)
 				mtx_gauge_gint_import(gauge, cur_node,&tgroup->layer,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"font") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"font",4) == 0)
 				mtx_gauge_gchar_import(gauge, cur_node,&tgroup->font,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"font_scale") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"font_scale",10) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tgroup->font_scale,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"text") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"text",4) == 0)
 				mtx_gauge_gchar_import(gauge, cur_node,&tgroup->text,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"text_inset") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"text_inset",10) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tgroup->text_inset,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"maj_tick_inset") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"maj_tick_inset",14) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tgroup->maj_tick_inset,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"min_tick_inset") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"min_tick_inset",14) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tgroup->min_tick_inset,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"maj_tick_length") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"maj_tick_length",15) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tgroup->maj_tick_length,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"min_tick_length") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"min_tick_length",15) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tgroup->min_tick_length,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"maj_tick_width") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"maj_tick_width",14) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tgroup->maj_tick_width,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"min_tick_width") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"min_tick_width",14) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tgroup->min_tick_width,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"start_angle") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"start_angle",11) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tgroup->start_angle,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"sweep_angle") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"sweep_angle",11) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&tgroup->sweep_angle,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"num_maj_ticks") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"num_maj_ticks",13) == 0)
 				mtx_gauge_gint_import(gauge, cur_node,&tgroup->num_maj_ticks,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"num_min_ticks") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"num_min_ticks",13) == 0)
 				mtx_gauge_gint_import(gauge, cur_node,&tgroup->num_min_ticks,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"text_color_day") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"text_color_day",14) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&tgroup->text_color[MTX_DAY],api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"text_color_nite") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"text_color_nite",15) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&tgroup->text_color[MTX_NITE],api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"maj_tick_color_day") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"maj_tick_color_day",18) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&tgroup->maj_tick_color[MTX_DAY],api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"maj_tick_color_nite") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"maj_tick_color_nite",19) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&tgroup->maj_tick_color[MTX_NITE],api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"min_tick_color_day") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"min_tick_color_day",18) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&tgroup->min_tick_color[MTX_DAY],api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"min_tick_color_nite") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"min_tick_color_nite",19) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&tgroup->min_tick_color[MTX_NITE],api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"text_color") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"text_color",10) == 0)
 			{
 				mtx_gauge_color_import(gauge, cur_node,&tgroup->text_color[MTX_DAY],api_compat);
 				tgroup->text_color[MTX_NITE] = tgroup->text_color[MTX_DAY];
 			}
-			if (g_strcasecmp((gchar *)cur_node->name,"maj_tick_color") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"maj_tick_color",14) == 0)
 			{
 				mtx_gauge_color_import(gauge, cur_node,&tgroup->maj_tick_color[MTX_DAY],api_compat);
 				tgroup->maj_tick_color[MTX_NITE] = tgroup->maj_tick_color[MTX_DAY];
 			}
-			if (g_strcasecmp((gchar *)cur_node->name,"min_tick_color") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"min_tick_color",14) == 0)
 			{
 				mtx_gauge_color_import(gauge, cur_node,&tgroup->min_tick_color[MTX_DAY],api_compat);
 				tgroup->min_tick_color[MTX_NITE] = tgroup->min_tick_color[MTX_DAY];
@@ -491,45 +491,45 @@ void mtx_gauge_polygon_import(MtxGaugeFace *gauge, xmlNode *node, gpointer dest,
 	{
 		if (cur_node->type == XML_ELEMENT_NODE)
 		{
-			if (g_strcasecmp((gchar *)cur_node->name,"layer") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"layer",5) == 0)
 				mtx_gauge_gint_import(gauge, cur_node,&poly->layer,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"filled") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"filled",6) == 0)
 				mtx_gauge_gint_import(gauge, cur_node,&poly->filled,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"line_width") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"line_width",10) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&poly->line_width,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"line_style") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"line_style",10) == 0)
 				mtx_gauge_gint_import(gauge, cur_node,&poly->line_style,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"join_style") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"join_style",10) == 0)
 				mtx_gauge_gint_import(gauge, cur_node,&poly->join_style,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"color_day") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color_day",9) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&poly->color[MTX_DAY],api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"color_nite") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color_nite",10) == 0)
 				mtx_gauge_color_import(gauge, cur_node,&poly->color[MTX_NITE],api_compat);
 			/* API compat */
-			if (g_strcasecmp((gchar *)cur_node->name,"color") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"color",5) == 0)
 			{
 				mtx_gauge_color_import(gauge, cur_node,&poly->color[MTX_DAY],api_compat);
 				poly->color[MTX_NITE] = poly->color[MTX_DAY];
 			}
-			if (g_strcasecmp((gchar *)cur_node->name,"Circle") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"Circle",6) == 0)
 			{
 				poly->data = g_new0(MtxCircle,1);
 				poly->type = MTX_CIRCLE;
 				mtx_gauge_poly_circle_import(gauge, cur_node,poly->data,api_compat);
 			}
-			if (g_strcasecmp((gchar *)cur_node->name,"Arc") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"Arc",3) == 0)
 			{
 				poly->data = g_new0(MtxArc,1);
 				poly->type = MTX_ARC;
 				mtx_gauge_poly_arc_import(gauge, cur_node,poly->data,api_compat);
 			}
-			if (g_strcasecmp((gchar *)cur_node->name,"Rectangle") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"Rectangle",9) == 0)
 			{
 				poly->data = g_new0(MtxRectangle,1);
 				poly->type = MTX_RECTANGLE;
 				mtx_gauge_poly_rectangle_import(gauge, cur_node,poly->data,api_compat);
 			}
-			if (g_strcasecmp((gchar *)cur_node->name,"GenPolygon") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"GenPolygon",10) == 0)
 			{
 				poly->data = g_new0(MtxGenPoly,1);
 				poly->type = MTX_GENPOLY;
@@ -558,11 +558,11 @@ void mtx_gauge_poly_circle_import(MtxGaugeFace *gauge, xmlNode *node, gpointer d
 	{
 		if (cur_node->type == XML_ELEMENT_NODE)
 		{
-			if (g_strcasecmp((gchar *)cur_node->name,"x") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"x",1) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->x,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"y") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"y",1) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->y,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"radius") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"radius",6) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->radius,api_compat);
 		}
 		cur_node = cur_node->next;
@@ -586,13 +586,13 @@ void mtx_gauge_poly_rectangle_import(MtxGaugeFace *gauge, xmlNode *node, gpointe
 	{
 		if (cur_node->type == XML_ELEMENT_NODE)
 		{
-			if (g_strcasecmp((gchar *)cur_node->name,"x") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"x",1) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->x,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"y") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"y",1) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->y,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"width") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"width",5) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->width,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"height") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"height",6) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->height,api_compat);
 		}
 		cur_node = cur_node->next;
@@ -616,17 +616,17 @@ void mtx_gauge_poly_arc_import(MtxGaugeFace *gauge, xmlNode *node, gpointer dest
 	{
 		if (cur_node->type == XML_ELEMENT_NODE)
 		{
-			if (g_strcasecmp((gchar *)cur_node->name,"x") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"x",1) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->x,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"y") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"y",1) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->y,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"width") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"width",5) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->width,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"height") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"height",6) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->height,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"start_angle") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"start_angle",11) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->start_angle,api_compat);
-			if (g_strcasecmp((gchar *)cur_node->name,"sweep_angle") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"sweep_angle",11) == 0)
 				mtx_gauge_gfloat_import(gauge, cur_node,&data->sweep_angle,api_compat);
 		}
 		cur_node = cur_node->next;
@@ -654,12 +654,12 @@ void mtx_gauge_poly_generic_import(MtxGaugeFace *gauge, xmlNode *node, gpointer 
 	{
 		if (cur_node->type == XML_ELEMENT_NODE)
 		{
-			if (g_strcasecmp((gchar *)cur_node->name,"num_points") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"num_points",10) == 0)
 			{
 				mtx_gauge_gint_import(gauge, cur_node,&data->num_points,api_compat);
 				data->points = g_new0(MtxPoint, data->num_points);
 			}
-			if (g_strcasecmp((gchar *)cur_node->name,"x_coords") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"x_coords",8) == 0)
 			{
 				mtx_gauge_gchar_import(gauge, cur_node,&tmpbuf,api_compat);
 				x_vector = g_strsplit(tmpbuf," ", -1);
@@ -671,7 +671,7 @@ void mtx_gauge_poly_generic_import(MtxGaugeFace *gauge, xmlNode *node, gpointer 
 				g_strfreev(x_vector);
 				tmpbuf = NULL;
 			}
-			if (g_strcasecmp((gchar *)cur_node->name,"y_coords") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"y_coords",8) == 0)
 			{
 				mtx_gauge_gchar_import(gauge, cur_node,&tmpbuf,api_compat);
 				y_vector = g_strsplit(tmpbuf," ", -1);
