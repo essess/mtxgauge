@@ -13,7 +13,7 @@
  */
 
 #include <gtk/gtk.h>
-#include <glib/gprintf.h>
+#include <glib.h>
 #include <gauge.h>
 #include <math.h>
 
@@ -28,20 +28,13 @@ update( GtkWidget * const gauge );
  *      what I mean. When the gauge is small, the effect is not noticed - enlarge it to exaggerate
  */
 
-#ifndef NDEBUG
-  #define ASSERT(x) \
-    do { if (!(x)) { g_printerr("%s, %u : %s\n"__FILE__, __LINE__,#x); } } while(0)
-#else
-  #define ASSERT(x) \
-    do { (void)sizeof(x); } while(0)
-#endif
-
-int main (int argc, char **argv)
+int
+    main( int argc, char **argv )
 {
     gtk_init (&argc, &argv);
 
     GtkWidget * const window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-    ASSERT( window );
+    g_assert( window );
 
     gtk_widget_set_size_request(GTK_WIDGET(window),240,240);
     gtk_widget_add_events(GTK_WIDGET(window),
@@ -49,7 +42,7 @@ int main (int argc, char **argv)
     gtk_window_set_decorated(GTK_WINDOW(window),FALSE);
 
     GtkWidget *const gauge = mtx_gauge_face_new ();
-    ASSERT( gauge );
+    g_assert( gauge );
 
     gtk_container_add (GTK_CONTAINER (window), gauge);
     gtk_widget_realize(gauge);
@@ -77,7 +70,7 @@ int main (int argc, char **argv)
     }
 
     guint const id = g_timeout_add( 20, (GSourceFunc)update, gauge );
-    ASSERT( id );
+    g_assert( id );
 
     mtx_gauge_face_export_xml(MTX_GAUGE_FACE(gauge),"output2.xml");
 
@@ -93,7 +86,7 @@ int main (int argc, char **argv)
 static gboolean
 update( GtkWidget * const gauge )
 {
-    ASSERT( gauge );
+    g_assert( gauge );
 
     static gfloat lower = 0.0;
     static gfloat upper = 0.0;

@@ -161,17 +161,17 @@ void generic_xml_color_import(xmlNode *node, gpointer dest)
 		{
 			if (cur_node->type == XML_ELEMENT_NODE)
 			{
-				if (g_strcasecmp((gchar *)cur_node->name,"red") == 0)
+				if (g_ascii_strncasecmp((gchar *)cur_node->name,"red",3) == 0)
 				{
 					generic_xml_gint_import(cur_node,&tmp);
 					color->red=(guint16)tmp;
 				}
-				if (g_strcasecmp((gchar *)cur_node->name,"green") == 0)
+				if (g_ascii_strncasecmp((gchar *)cur_node->name,"green",5) == 0)
 				{
 					generic_xml_gint_import(cur_node,&tmp);
 					color->green=(guint16)tmp;
 				}
-				if (g_strcasecmp((gchar *)cur_node->name,"blue") == 0)
+				if (g_ascii_strncasecmp((gchar *)cur_node->name,"blue",4) == 0)
 				{
 					generic_xml_gint_import(cur_node,&tmp);
 					color->blue=(guint16)tmp;
@@ -218,9 +218,9 @@ gboolean xml_api_check(xmlNode *node, gint major, gint minor)
 	{
 		if (cur_node->type == XML_ELEMENT_NODE)
 		{
-			if (g_strcasecmp((gchar *)cur_node->name,"major") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"major",5) == 0)
 				generic_xml_gint_import(cur_node,&maj);
-			if (g_strcasecmp((gchar *)cur_node->name,"minor") == 0)
+			if (g_ascii_strncasecmp((gchar *)cur_node->name,"minor",5) == 0)
 				generic_xml_gint_import(cur_node,&min);
 
 		}
