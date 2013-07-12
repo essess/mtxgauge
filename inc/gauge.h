@@ -16,8 +16,6 @@
 #define MTX_GAUGE_FACE_H
 
 #include <gtk/gtk.h>
-#include <libxml/parser.h>
-#include <libxml/tree.h>
 
 G_BEGIN_DECLS
 
@@ -232,7 +230,6 @@ struct _MtxDispatchHelper
 {
     gchar * element_name;
     gpointer src;
-    xmlNodePtr root_node;
     MtxGaugeFace * gauge;
 };
 
