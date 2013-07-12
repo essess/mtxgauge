@@ -73,7 +73,7 @@ int
 static gboolean
 update( GtkWidget * const gauge )
 {
-    g_assert( gauge );
+    MtxGaugeFace * const g = MTX_GAUGE_FACE( gauge );
 
     static gfloat lower = 0.0;
     static gfloat upper = 0.0;
@@ -82,10 +82,10 @@ update( GtkWidget * const gauge )
     static gboolean rising = TRUE;
 
     interval = (upper-lower)/100.0;
-    mtx_gauge_face_get_attribute(MTX_GAUGE_FACE(gauge), LBOUND, &lower);
-    mtx_gauge_face_get_attribute(MTX_GAUGE_FACE(gauge), UBOUND, &upper);
+    mtx_gauge_face_get_attribute( g, LBOUND, &lower);
+    mtx_gauge_face_get_attribute( g, UBOUND, &upper);
 
-    mtx_gauge_face_get_value(MTX_GAUGE_FACE (gauge), &cur_val);
+    mtx_gauge_face_get_value( g, &cur_val);
 
     if (cur_val >= upper)
         rising = FALSE;
@@ -97,7 +97,7 @@ update( GtkWidget * const gauge )
     else
         cur_val-=interval;
 
-    mtx_gauge_face_set_value (MTX_GAUGE_FACE (gauge),cur_val);
+    mtx_gauge_face_set_value ( g, cur_val);
 
     return TRUE;
 }
