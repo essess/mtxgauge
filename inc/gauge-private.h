@@ -36,12 +36,12 @@ struct _MtxGaugeFacePrivate
         GdkPixmap *tmp_pixmap;  /*! Tmp pixmap for alerts for speed boost */
         gint w;                 /*! width */
         gint h;                 /*! height */
-	gint max_layers;	/*! maximum layers */
+        gint max_layers;        /*! maximum layers */
         gdouble xc;             /*! X Center */
         gdouble yc;             /*! Y Center */
         gdouble radius;         /*! Radius of display */
-	gdouble last_click_x;	/*! Last mouse click X in -1 <-> +1 scaling */
-	gdouble last_click_y;	/*! Last mouse click Y in -1 <-> +1 scaling */
+        gdouble last_click_x;   /*! Last mouse click X in -1 <-> +1 scaling */
+        gdouble last_click_y;   /*! Last mouse click Y in -1 <-> +1 scaling */
         cairo_t *cr;            /*! Cairo context,  not sure if this is good
                                    too hold onto or not */
         cairo_font_options_t * font_options;
@@ -65,10 +65,10 @@ struct _MtxGaugeFacePrivate
         guint last_alert_index;  /*! index of last active alert struct */
         GdkColor colors[GAUGE_NUM_COLORS]; /*! Array of colors for specific
                                              parts of a gauge object */
-	MtxDirection direction; /*! Direction of motion on the gauge */
-	gboolean reenable_tattletale;	/*! Special tattle flag */
-	gboolean show_tattletale;	/*! Show a Tattletale? */
-	gfloat tattletale_alpha;/*! TattleTale transparency */
+        MtxDirection direction; /*! Direction of motion on the gauge */
+        gboolean reenable_tattletale;   /*! Special tattle flag */
+        gboolean show_tattletale;   /*! Show a Tattletale? */
+        gfloat tattletale_alpha;/*! TattleTale transparency */
         gfloat value_font_scale;/*! Array of font scales */
         gfloat value_xpos;      /*! Array of X offsets for strings */
         gfloat value_ypos;      /*! Array of X offsets for strings */
@@ -76,7 +76,7 @@ struct _MtxGaugeFacePrivate
         gfloat start_angle;     /*! Start point, (Cairo, CW rotation) */
         gfloat sweep_angle;     /*! Sweep of gauge (cairo, CW increasing) */
         gfloat value;           /*! Value represneting needle position */
-	gfloat peak;		/*! Peak Value */
+        gfloat peak;        /*! Peak Value */
         gfloat lbound;          /*! Lower Bound to clamp at */
         gfloat ubound;          /*! Upper Bound to Clamp at */
         MtxRotType rotation;    /*! Rotation enumeration */
@@ -89,11 +89,11 @@ struct _MtxGaugeFacePrivate
         gfloat needle_tip_width;/*! % of rad width of needle tip */
         gfloat needle_tail_width;/*! % of rad width of needle tip */
         gint needle_polygon_points;
-	GdkRectangle needle_bounding_box;	/*! needle bounding box */
-	GdkRectangle value_bounding_box;	/*! value text bounding box */
+        GdkRectangle needle_bounding_box;   /*! needle bounding box */
+        GdkRectangle value_bounding_box;    /*! value text bounding box */
         MtxPoint needle_coords[6];      /*! 6 point needle for now */
         MtxPoint tattle_coords[6];      /*! 6 point needle for now */
-	MtxDayNite daytime_mode;	/*! Color enum */
+        MtxDayNite daytime_mode;    /*! Color enum */
 };
 
 
