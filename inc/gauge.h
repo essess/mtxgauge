@@ -21,12 +21,12 @@
 
 G_BEGIN_DECLS
 
-#define MTX_TYPE_GAUGE_FACE		(mtx_gauge_face_get_type ())
-#define MTX_GAUGE_FACE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), MTX_TYPE_GAUGE_FACE, MtxGaugeFace))
-#define MTX_GAUGE_FACE_CLASS(obj)	(G_TYPE_CHECK_CLASS_CAST ((obj), MTX_GAUGE_FACE, MtxGaugeFaceClass))
-#define MTX_IS_GAUGE_FACE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), MTX_TYPE_GAUGE_FACE))
-#define MTX_IS_GAUGE_FACE_CLASS(obj)	(G_TYPE_CHECK_CLASS_TYPE ((obj), MTX_TYPE_GAUGE_FACE))
-#define MTX_GAUGE_FACE_GET_CLASS	(G_TYPE_INSTANCE_GET_CLASS ((obj), MTX_TYPE_GAUGE_FACE, MtxGaugeFaceClass))
+#define MTX_TYPE_GAUGE_FACE     (mtx_gauge_face_get_type ())
+#define MTX_GAUGE_FACE(obj)     (G_TYPE_CHECK_INSTANCE_CAST ((obj), MTX_TYPE_GAUGE_FACE, MtxGaugeFace))
+#define MTX_GAUGE_FACE_CLASS(obj)   (G_TYPE_CHECK_CLASS_CAST ((obj), MTX_GAUGE_FACE, MtxGaugeFaceClass))
+#define MTX_IS_GAUGE_FACE(obj)      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MTX_TYPE_GAUGE_FACE))
+#define MTX_IS_GAUGE_FACE_CLASS(obj)    (G_TYPE_CHECK_CLASS_TYPE ((obj), MTX_TYPE_GAUGE_FACE))
+#define MTX_GAUGE_FACE_GET_CLASS    (G_TYPE_INSTANCE_GET_CLASS ((obj), MTX_TYPE_GAUGE_FACE, MtxGaugeFaceClass))
 
 
 #define DRAG_BORDER 7
@@ -34,206 +34,206 @@ G_BEGIN_DECLS
 /* MtxDayNite enum, determines which colorscheme is used */
 typedef enum
 {
-	MTX_NITE = FALSE,
-	MTX_DAY = TRUE
+    MTX_NITE = FALSE,
+    MTX_DAY = TRUE
 }MtxDayNite;
 
 /* MtxClampType enum,  display clamping */
 typedef enum
 {
-	CLAMP_UPPER = 0xaa,
-	CLAMP_LOWER,
-	CLAMP_NONE
+    CLAMP_UPPER = 0xaa,
+    CLAMP_LOWER,
+    CLAMP_NONE
 }MtxClampType;
 
 
 /* MtxDirection enum,  display clamping */
 typedef enum
 {
-	ASCENDING = 0xbb,
-	DESCENDING
+    ASCENDING = 0xbb,
+    DESCENDING
 }MtxDirection;
 
 
 /* MtxRotType enum,  needle sweep rotation */
 typedef enum
 {
-	MTX_ROT_CCW = 0,
-	MTX_ROT_CW
+    MTX_ROT_CCW = 0,
+    MTX_ROT_CW
 }MtxRotType;
 
 
 /* MtxPolyType enumeration,  for polygon support */
 typedef enum
 {
-	MTX_CIRCLE = 0xcc,
-	MTX_ARC,
-	MTX_RECTANGLE,
-	MTX_GENPOLY,
-	NUM_POLYS
+    MTX_CIRCLE = 0xcc,
+    MTX_ARC,
+    MTX_RECTANGLE,
+    MTX_GENPOLY,
+    NUM_POLYS
 }MtxPolyType;
 
 
 /*! GaugeColorIndex enum, for indexing into the color arrays */
 typedef enum
 {
-	GAUGE_COL_BG_DAY = 0,
-	GAUGE_COL_BG_NITE,
-	GAUGE_COL_NEEDLE_DAY,
-	GAUGE_COL_NEEDLE_NITE,
-	GAUGE_COL_VALUE_FONT_DAY,
-	GAUGE_COL_VALUE_FONT_NITE,
-	GAUGE_COL_GRADIENT_BEGIN_DAY,
-	GAUGE_COL_GRADIENT_BEGIN_NITE,
-	GAUGE_COL_GRADIENT_END_DAY,
-	GAUGE_COL_GRADIENT_END_NITE,
-	GAUGE_NUM_COLORS
+    GAUGE_COL_BG_DAY = 0,
+    GAUGE_COL_BG_NITE,
+    GAUGE_COL_NEEDLE_DAY,
+    GAUGE_COL_NEEDLE_NITE,
+    GAUGE_COL_VALUE_FONT_DAY,
+    GAUGE_COL_VALUE_FONT_NITE,
+    GAUGE_COL_GRADIENT_BEGIN_DAY,
+    GAUGE_COL_GRADIENT_BEGIN_NITE,
+    GAUGE_COL_GRADIENT_END_DAY,
+    GAUGE_COL_GRADIENT_END_NITE,
+    GAUGE_NUM_COLORS
 }GaugeColorIndex;
 
 
 /* Text Block enumeration for the individual fields */
 typedef enum
 {
-	TB_FONT_SCALE = 0,
-	TB_X_POS,
-	TB_Y_POS,
-	TB_COLOR_DAY,
-	TB_COLOR_NITE,
-	TB_FONT,
-	TB_TEXT,
-	TB_LAYER,
-	TB_NUM_FIELDS
+    TB_FONT_SCALE = 0,
+    TB_X_POS,
+    TB_Y_POS,
+    TB_COLOR_DAY,
+    TB_COLOR_NITE,
+    TB_FONT,
+    TB_TEXT,
+    TB_LAYER,
+    TB_NUM_FIELDS
 }TbField;
 
 
 /* Polygon enumeration for the individual fields */
 typedef enum
 {
-	POLY_COLOR_DAY = 0,
-	POLY_COLOR_NITE,
-	POLY_LINEWIDTH,
-	POLY_LINESTYLE,
-	POLY_JOINSTYLE,
-	POLY_X,
-	POLY_Y,
-	POLY_WIDTH,
-	POLY_HEIGHT,
-	POLY_RADIUS,
-	POLY_POINTS,
-	POLY_FILLED,
-	POLY_START_ANGLE,
-	POLY_SWEEP_ANGLE,
-	POLY_NUM_POINTS,
-	POLY_LAYER,
-	POLY_NUM_FIELDS
+    POLY_COLOR_DAY = 0,
+    POLY_COLOR_NITE,
+    POLY_LINEWIDTH,
+    POLY_LINESTYLE,
+    POLY_JOINSTYLE,
+    POLY_X,
+    POLY_Y,
+    POLY_WIDTH,
+    POLY_HEIGHT,
+    POLY_RADIUS,
+    POLY_POINTS,
+    POLY_FILLED,
+    POLY_START_ANGLE,
+    POLY_SWEEP_ANGLE,
+    POLY_NUM_POINTS,
+    POLY_LAYER,
+    POLY_NUM_FIELDS
 }PolyField;
 
 
 /* Tick Group enumeration for the individual fields */
 typedef enum
 {
-	TG_FONT = 0,
-	TG_TEXT,
-	TG_TEXT_COLOR_DAY,
-	TG_TEXT_COLOR_NITE,
-	TG_FONT_SCALE,
-	TG_TEXT_INSET,
-	TG_NUM_MAJ_TICKS,
-	TG_MAJ_TICK_COLOR_DAY,
-	TG_MAJ_TICK_COLOR_NITE,
-	TG_MAJ_TICK_INSET,
-	TG_MAJ_TICK_LENGTH,
-	TG_MAJ_TICK_WIDTH,
-	TG_NUM_MIN_TICKS,
-	TG_MIN_TICK_COLOR_DAY,
-	TG_MIN_TICK_COLOR_NITE,
-	TG_MIN_TICK_INSET,
-	TG_MIN_TICK_LENGTH,
-	TG_MIN_TICK_WIDTH,
-	TG_START_ANGLE,
-	TG_SWEEP_ANGLE,
-	TG_LAYER,
-	TG_NUM_FIELDS
+    TG_FONT = 0,
+    TG_TEXT,
+    TG_TEXT_COLOR_DAY,
+    TG_TEXT_COLOR_NITE,
+    TG_FONT_SCALE,
+    TG_TEXT_INSET,
+    TG_NUM_MAJ_TICKS,
+    TG_MAJ_TICK_COLOR_DAY,
+    TG_MAJ_TICK_COLOR_NITE,
+    TG_MAJ_TICK_INSET,
+    TG_MAJ_TICK_LENGTH,
+    TG_MAJ_TICK_WIDTH,
+    TG_NUM_MIN_TICKS,
+    TG_MIN_TICK_COLOR_DAY,
+    TG_MIN_TICK_COLOR_NITE,
+    TG_MIN_TICK_INSET,
+    TG_MIN_TICK_LENGTH,
+    TG_MIN_TICK_WIDTH,
+    TG_START_ANGLE,
+    TG_SWEEP_ANGLE,
+    TG_LAYER,
+    TG_NUM_FIELDS
 }TgField;
 
 
 /* Warning Range enumeration for the individual fields */
 typedef enum
 {
-	WR_LOWPOINT = 0,
-	WR_HIGHPOINT,
-	WR_COLOR_DAY,
-	WR_COLOR_NITE,
-	WR_LWIDTH,
-	WR_INSET,
-	WR_LAYER,
-	WR_NUM_FIELDS
+    WR_LOWPOINT = 0,
+    WR_HIGHPOINT,
+    WR_COLOR_DAY,
+    WR_COLOR_NITE,
+    WR_LWIDTH,
+    WR_INSET,
+    WR_LAYER,
+    WR_NUM_FIELDS
 }WrField;
 
 /* Alert Range enumeration for the individual fields */
 typedef enum
 {
-	ALRT_LOWPOINT = 0,
-	ALRT_HIGHPOINT,
-	ALRT_COLOR_DAY,
-	ALRT_COLOR_NITE,
-	ALRT_LWIDTH,
-	ALRT_INSET,
-	ALRT_X_OFFSET,
-	ALRT_Y_OFFSET,
-	ALRT_LAYER,
-	ALRT_NUM_FIELDS
+    ALRT_LOWPOINT = 0,
+    ALRT_HIGHPOINT,
+    ALRT_COLOR_DAY,
+    ALRT_COLOR_NITE,
+    ALRT_LWIDTH,
+    ALRT_INSET,
+    ALRT_X_OFFSET,
+    ALRT_Y_OFFSET,
+    ALRT_LAYER,
+    ALRT_NUM_FIELDS
 }AlertField;
 
 
 /* General Attributes enumeration */
 typedef enum
 {
-	DUMMY = 0,
-	START_ANGLE,
-	SWEEP_ANGLE,
-	ROTATION,
-	LBOUND,
-	UBOUND,
-	VALUE_FONTSCALE,
-	VALUE_XPOS,
-	VALUE_YPOS,
-	NEEDLE_TAIL,
-	NEEDLE_LENGTH,
-	NEEDLE_WIDTH,
-	NEEDLE_TIP_WIDTH,
-	NEEDLE_TAIL_WIDTH,
-	PRECISION,
-	ANTIALIAS,
-	TATTLETALE,
-	TATTLETALE_ALPHA,
-	SHOW_VALUE,
-	NUM_ATTRIBUTES
+    DUMMY = 0,
+    START_ANGLE,
+    SWEEP_ANGLE,
+    ROTATION,
+    LBOUND,
+    UBOUND,
+    VALUE_FONTSCALE,
+    VALUE_XPOS,
+    VALUE_YPOS,
+    NEEDLE_TAIL,
+    NEEDLE_LENGTH,
+    NEEDLE_WIDTH,
+    NEEDLE_TIP_WIDTH,
+    NEEDLE_TAIL_WIDTH,
+    PRECISION,
+    ANTIALIAS,
+    TATTLETALE,
+    TATTLETALE_ALPHA,
+    SHOW_VALUE,
+    NUM_ATTRIBUTES
 }MtxGenAttr;
 
 
-typedef struct _MtxGaugeFace		MtxGaugeFace;
-typedef struct _MtxGaugeFaceClass	MtxGaugeFaceClass;
-typedef struct _MtxWarningRange		MtxWarningRange;
-typedef struct _MtxAlertRange		MtxAlertRange;
-typedef struct _MtxTextBlock		MtxTextBlock;
-typedef struct _MtxTickGroup		MtxTickGroup;
-typedef struct _MtxDispatchHelper	MtxDispatchHelper;
-typedef struct _MtxPoint		MtxPoint;
-typedef struct _MtxPolygon		MtxPolygon;
-typedef struct _MtxCircle		MtxCircle;
-typedef struct _MtxArc			MtxArc;
-typedef struct _MtxRectangle		MtxSquare;
-typedef struct _MtxRectangle		MtxRectangle;
-typedef struct _MtxGenPoly		MtxGenPoly;
+typedef struct _MtxGaugeFace        MtxGaugeFace;
+typedef struct _MtxGaugeFaceClass   MtxGaugeFaceClass;
+typedef struct _MtxWarningRange     MtxWarningRange;
+typedef struct _MtxAlertRange       MtxAlertRange;
+typedef struct _MtxTextBlock        MtxTextBlock;
+typedef struct _MtxTickGroup        MtxTickGroup;
+typedef struct _MtxDispatchHelper   MtxDispatchHelper;
+typedef struct _MtxPoint        MtxPoint;
+typedef struct _MtxPolygon      MtxPolygon;
+typedef struct _MtxCircle       MtxCircle;
+typedef struct _MtxArc          MtxArc;
+typedef struct _MtxRectangle        MtxSquare;
+typedef struct _MtxRectangle        MtxRectangle;
+typedef struct _MtxGenPoly      MtxGenPoly;
 
 
 struct _MtxDispatchHelper
 {
-	gchar * element_name;
-	gpointer src;
-	xmlNodePtr root_node;
-	MtxGaugeFace * gauge;
+    gchar * element_name;
+    gpointer src;
+    xmlNodePtr root_node;
+    MtxGaugeFace * gauge;
 };
 
 
@@ -246,12 +246,12 @@ struct _MtxDispatchHelper
  */
 struct _MtxWarningRange
 {
-	gfloat lowpoint;	/* where the range starts from */
-	gfloat highpoint; 	/* where the range ends at */
-	GdkColor color[2];	/* The colors to use */
-	gfloat lwidth;		/* % of radius to determine the line width */
-	gfloat inset;		/* % of radius to inset the line */
-	gint layer;		/* Layer number */
+    gfloat lowpoint;    /* where the range starts from */
+    gfloat highpoint;   /* where the range ends at */
+    GdkColor color[2];  /* The colors to use */
+    gfloat lwidth;      /* % of radius to determine the line width */
+    gfloat inset;       /* % of radius to inset the line */
+    gint layer;     /* Layer number */
 };
 
 
@@ -264,14 +264,14 @@ struct _MtxWarningRange
  */
 struct _MtxAlertRange
 {
-	gfloat lowpoint;	/* where the range starts from */
-	gfloat highpoint; 	/* where the range ends at */
-	GdkColor color[2];	/* The colors to use */
-	gfloat lwidth;		/* % of radius to determine the line width */
-	gfloat inset;		/* % of radius to inset the line */
-	gfloat x_offset;	/* % of radius to offset the X origin */
-	gfloat y_offset;	/* % of radius to offset the Y origin */
-	gint layer;		/* Layer number */
+    gfloat lowpoint;    /* where the range starts from */
+    gfloat highpoint;   /* where the range ends at */
+    GdkColor color[2];  /* The colors to use */
+    gfloat lwidth;      /* % of radius to determine the line width */
+    gfloat inset;       /* % of radius to inset the line */
+    gfloat x_offset;    /* % of radius to offset the X origin */
+    gfloat y_offset;    /* % of radius to offset the Y origin */
+    gint layer;     /* Layer number */
 };
 
 
@@ -283,13 +283,13 @@ struct _MtxAlertRange
  */
 struct _MtxTextBlock
 {
-	gchar * font;
-	gchar * text;
-	GdkColor color[2];
-	gfloat font_scale;
-	gfloat x_pos;
-	gfloat y_pos;
-	gint layer;		/* Layer number */
+    gchar * font;
+    gchar * text;
+    GdkColor color[2];
+    gfloat font_scale;
+    gfloat x_pos;
+    gfloat y_pos;
+    gint layer;     /* Layer number */
 };
 
 /*! \struct _MtxTickGroup
@@ -302,24 +302,24 @@ struct _MtxTextBlock
  */
 struct _MtxTickGroup
 {
-	gchar *font;
-	gchar *text;
-	GdkColor text_color[2];
-	gfloat font_scale;
-	gfloat text_inset;
-	gint num_maj_ticks;
-	GdkColor maj_tick_color[2];
-	gfloat maj_tick_inset;
-	gfloat maj_tick_width;
-	gfloat maj_tick_length;
-	gint num_min_ticks;
-	GdkColor min_tick_color[2];
-	gfloat min_tick_inset;
-	gfloat min_tick_width;
-	gfloat min_tick_length;
-	gfloat start_angle;
-	gfloat sweep_angle;
-	gint layer;		/* Layer number */
+    gchar *font;
+    gchar *text;
+    GdkColor text_color[2];
+    gfloat font_scale;
+    gfloat text_inset;
+    gint num_maj_ticks;
+    GdkColor maj_tick_color[2];
+    gfloat maj_tick_inset;
+    gfloat maj_tick_width;
+    gfloat maj_tick_length;
+    gint num_min_ticks;
+    GdkColor min_tick_color[2];
+    gfloat min_tick_inset;
+    gfloat min_tick_width;
+    gfloat min_tick_length;
+    gfloat start_angle;
+    gfloat sweep_angle;
+    gint layer;     /* Layer number */
 };
 
 
@@ -330,8 +330,8 @@ struct _MtxTickGroup
  */
 struct _MtxPoint
 {
-	gfloat x;		/* X val as % of gauge radius */
-	gfloat y;		/* Y val as % of gauge radius */
+    gfloat x;       /* X val as % of gauge radius */
+    gfloat y;       /* Y val as % of gauge radius */
 };
 
 /*! \struct _MtxPolygon
@@ -342,14 +342,14 @@ struct _MtxPoint
  */
 struct _MtxPolygon
 {
-	MtxPolyType type;		/* Enum type */
-	gboolean filled;		/* Filled or not? */
-	GdkColor color[2];		/* Color */
-	gfloat line_width;		/* % of radius, clamped at 1 pixel */
-	GdkLineStyle line_style;	/* Line Style */
-	GdkJoinStyle join_style;	/* Join Style */
-	void *data;			/* pointer to datastruct */
-	gint layer;			/* Layer number */
+    MtxPolyType type;       /* Enum type */
+    gboolean filled;        /* Filled or not? */
+    GdkColor color[2];      /* Color */
+    gfloat line_width;      /* % of radius, clamped at 1 pixel */
+    GdkLineStyle line_style;    /* Line Style */
+    GdkJoinStyle join_style;    /* Join Style */
+    void *data;         /* pointer to datastruct */
+    gint layer;         /* Layer number */
 };
 
 
@@ -361,14 +361,14 @@ struct _MtxPolygon
  */
 struct _MtxCircle
 {
-	/* All float values excpet for angles are percentages of radius,
-	 * with respect to the center of the gauge
-	 * so an x value of 0 is the CENTER, a value of -1 is the left border
-	 * and +1 is the right border.
-	 */
-	gfloat x;		/* X center */
-	gfloat y;		/* Y center */
-	gfloat radius;		/* radius of circle as a % fo gauge radius */
+    /* All float values excpet for angles are percentages of radius,
+     * with respect to the center of the gauge
+     * so an x value of 0 is the CENTER, a value of -1 is the left border
+     * and +1 is the right border.
+     */
+    gfloat x;       /* X center */
+    gfloat y;       /* Y center */
+    gfloat radius;      /* radius of circle as a % fo gauge radius */
 };
 
 
@@ -380,17 +380,17 @@ struct _MtxCircle
  */
 struct _MtxArc
 {
-	/* All float values excpet for angles are percentages of radius,
-	 * with respect to the center of the gauge
-	 * so an x value of 0 is the CENTER, a value of -1 is the left border
-	 * and +1 is the right border.
-	 */
-	gfloat x;		/* Left edge of bounding rectangle */
-	gfloat y;		/* Right edge of bounding rectangle */
-	gfloat width;		/* width of bounding rectangle */
-	gfloat height;		/* height of bounding rectangle */
-	gfloat start_angle;	/* 0 deg is "3 O'Clock" CCW rotation */
-	gfloat sweep_angle;	/* Angle relative to start_angle */
+    /* All float values excpet for angles are percentages of radius,
+     * with respect to the center of the gauge
+     * so an x value of 0 is the CENTER, a value of -1 is the left border
+     * and +1 is the right border.
+     */
+    gfloat x;       /* Left edge of bounding rectangle */
+    gfloat y;       /* Right edge of bounding rectangle */
+    gfloat width;       /* width of bounding rectangle */
+    gfloat height;      /* height of bounding rectangle */
+    gfloat start_angle; /* 0 deg is "3 O'Clock" CCW rotation */
+    gfloat sweep_angle; /* Angle relative to start_angle */
 };
 
 
@@ -402,15 +402,15 @@ struct _MtxArc
  */
 struct _MtxRectangle
 {
-	/* All float values excpet for angles are percentages of radius,
-	 * with respect to the center of the gauge
-	 * so an x value of 0 is the CENTER, a value of -1 is the left border
-	 * and +1 is the right border.
-	 */
-	gfloat x;		/* Top left edge x coord (% of rad) */
-	gfloat y;		/* Top left edge y coord (% of rad) */
-	gfloat width;		/* Width */
-	gfloat height;		/* Height */
+    /* All float values excpet for angles are percentages of radius,
+     * with respect to the center of the gauge
+     * so an x value of 0 is the CENTER, a value of -1 is the left border
+     * and +1 is the right border.
+     */
+    gfloat x;       /* Top left edge x coord (% of rad) */
+    gfloat y;       /* Top left edge y coord (% of rad) */
+    gfloat width;       /* Width */
+    gfloat height;      /* Height */
 };
 
 /*! \struct _MtxGenPoly
@@ -422,18 +422,18 @@ struct _MtxRectangle
  */
 struct _MtxGenPoly
 {
-	gint num_points;	/* Number of points */
-	MtxPoint *points;	/* Dynamic array of points */
+    gint num_points;    /* Number of points */
+    MtxPoint *points;   /* Dynamic array of points */
 };
 
 struct _MtxGaugeFace
-{	/* public data */
-	GtkDrawingArea parent;
+{   /* public data */
+    GtkDrawingArea parent;
 };
 
 struct _MtxGaugeFaceClass
 {
-	GtkDrawingAreaClass parent_class;
+    GtkDrawingAreaClass parent_class;
 };
 
 GType mtx_gauge_face_get_type (void);
