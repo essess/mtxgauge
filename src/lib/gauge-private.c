@@ -25,20 +25,13 @@
  *  have come up with!
  */
 
-#include <cairo/cairo.h>
 #include <gauge.h>
 #include <gauge-private.h>
+#include <glib.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-#include <glib.h>
-#include <glib-object.h>
+#include <cairo/cairo.h>
 #include <math.h>
-#include <string.h>
-#include <time.h>
-
-#ifndef M_PI
- #define M_PI 3.1415926535897932385
-#endif
 
 GType mtx_gauge_face_get_type(void)
 {
@@ -353,7 +346,7 @@ void update_gauge_position (MtxGaugeFace *gauge)
 					range->color[priv->daytime_mode].blue/65535.0);
 			lwidth = priv->radius*range->lwidth < 1 ? 1: priv->radius*range->lwidth;
 			cairo_set_line_width (cr, lwidth);
-			cairo_arc(cr, priv->xc + (range->x_offset*priv->radius), priv->yc + (range->y_offset*priv->radius), (range->inset * priv->radius),0, 2*M_PI);
+			cairo_arc(cr, priv->xc + (range->x_offset*priv->radius), priv->yc + (range->y_offset*priv->radius), (range->inset * priv->radius),0, 2*G_PI);
 			cairo_stroke(cr);
 			cairo_destroy(cr);
 			break;
@@ -441,9 +434,9 @@ cairo_jump_out_of_alerts:
 	tmpf = (val-priv->lbound)/(priv->ubound-priv->lbound);
 
 	if (priv->rotation == MTX_ROT_CW)
-		needle_pos = (priv->start_angle+(tmpf*priv->sweep_angle))*(M_PI/180);
+		needle_pos = (priv->start_angle+(tmpf*priv->sweep_angle))*(G_PI/180);
 	else
-		needle_pos = ((priv->start_angle+priv->sweep_angle)-(tmpf*priv->sweep_angle))*(M_PI/180);
+		needle_pos = ((priv->start_angle+priv->sweep_angle)-(tmpf*priv->sweep_angle))*(G_PI/180);
 	if (priv->daytime_mode == MTX_DAY)
 	{
 		cairo_set_source_rgb (cr, priv->colors[GAUGE_COL_NEEDLE_DAY].red/65535.0,
@@ -839,7 +832,7 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 	}
 	/* Black out the rest of the gauge */
 	cairo_set_source_rgb (cr, 0,0,0);
-	cairo_arc(cr, priv->xc, priv->yc, priv->radius, 0, 2 * M_PI);
+	cairo_arc(cr, priv->xc, priv->yc, priv->radius, 0, 2 * G_PI);
 
 	cairo_fill(cr);
 	if (priv->antialias)
@@ -879,7 +872,7 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 
 	}
 	cairo_set_source(cr, gradient);
-	cairo_arc(cr, priv->xc, priv->yc, priv->radius, 0, 2 * M_PI);
+	cairo_arc(cr, priv->xc, priv->yc, priv->radius, 0, 2 * G_PI);
 	cairo_fill(cr);
 	cairo_pattern_destroy(gradient);
 
@@ -912,7 +905,7 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 				priv->colors[GAUGE_COL_GRADIENT_END_NITE].blue/65535.0);
 	}
 	cairo_set_source(cr, gradient);
-	cairo_arc(cr, priv->xc, priv->yc, (0.950 * priv->radius), 0, 2 * M_PI);
+	cairo_arc(cr, priv->xc, priv->yc, (0.950 * priv->radius), 0, 2 * G_PI);
 	cairo_fill(cr);
 	cairo_pattern_destroy(gradient);
 
@@ -929,7 +922,7 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 				priv->colors[GAUGE_COL_BG_NITE].green/65535.0,
 				priv->colors[GAUGE_COL_BG_NITE].blue/65535.0);
 	}
-	cairo_arc(cr, priv->xc, priv->yc, (0.900 * priv->radius), 0, 2 * M_PI);
+	cairo_arc(cr, priv->xc, priv->yc, (0.900 * priv->radius), 0, 2 * G_PI);
 	cairo_fill(cr);
 
 	for (layer=0;layer<priv->max_layers;layer++)
@@ -950,9 +943,9 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 			lwidth = priv->radius*range->lwidth < 1 ? 1: priv->radius*range->lwidth;
 			cairo_set_line_width (cr, lwidth);
 			if (priv->rotation == MTX_ROT_CW)
-				cairo_arc(cr, priv->xc, priv->yc, (range->inset * priv->radius),(priv->start_angle+(angle1*(priv->sweep_angle)))*(M_PI/180.0), (priv->start_angle+(angle2*(priv->sweep_angle)))*(M_PI/180.0));
+				cairo_arc(cr, priv->xc, priv->yc, (range->inset * priv->radius),(priv->start_angle+(angle1*(priv->sweep_angle)))*(G_PI/180.0), (priv->start_angle+(angle2*(priv->sweep_angle)))*(G_PI/180.0));
 			else
-				cairo_arc(cr, priv->xc, priv->yc, (range->inset * priv->radius),(priv->start_angle+priv->sweep_angle-(angle2*(priv->sweep_angle)))*(M_PI/180.0), (priv->start_angle+priv->sweep_angle-(angle1*(priv->sweep_angle)))*(M_PI/180.0));
+				cairo_arc(cr, priv->xc, priv->yc, (range->inset * priv->radius),(priv->start_angle+priv->sweep_angle-(angle2*(priv->sweep_angle)))*(G_PI/180.0), (priv->start_angle+priv->sweep_angle-(angle1*(priv->sweep_angle)))*(G_PI/180.0));
 			cairo_stroke(cr);
 		}
 
@@ -972,9 +965,9 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 
 			insetfrom = priv->radius * tgroup->maj_tick_inset;
 			if (priv->rotation == MTX_ROT_CW)
-				counter = tgroup->start_angle *(M_PI/180.0);
+				counter = tgroup->start_angle *(G_PI/180.0);
 			else
-				counter = (tgroup->start_angle+tgroup->sweep_angle) *(M_PI/180.0);
+				counter = (tgroup->start_angle+tgroup->sweep_angle) *(G_PI/180.0);
 			if (tgroup->text)
 			{
 				vector = g_strsplit(tgroup->text,",",-1);
@@ -1039,9 +1032,9 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 					for (k=1;k<=tgroup->num_min_ticks;k++)
 					{
 						if (priv->rotation == MTX_ROT_CW)
-							subcounter = (k*deg_per_minor_tick)*(M_PI/180.0);
+							subcounter = (k*deg_per_minor_tick)*(G_PI/180.0);
 						else
-							subcounter = -(k*deg_per_minor_tick)*(M_PI/180.0);
+							subcounter = -(k*deg_per_minor_tick)*(G_PI/180.0);
 						cairo_move_to (cr,
 								priv->xc + (priv->radius - mintick_inset) * cos (counter+subcounter),
 								priv->yc + (priv->radius - mintick_inset) * sin (counter+subcounter));
@@ -1053,9 +1046,9 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 					cairo_restore (cr); /* stack-pen-size */
 				}
 				if (priv->rotation == MTX_ROT_CW)
-					counter += (deg_per_major_tick)*(M_PI/180);
+					counter += (deg_per_major_tick)*(G_PI/180);
 				else
-					counter -= (deg_per_major_tick)*(M_PI/180);
+					counter -= (deg_per_major_tick)*(G_PI/180);
 			}
 			g_strfreev(vector);
 		}
@@ -1092,7 +1085,7 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 							priv->xc+((MtxCircle *)poly->data)->x*priv->radius,
 							priv->yc+((MtxCircle *)poly->data)->y*priv->radius,
 							((MtxCircle *)poly->data)->radius*priv->radius,
-							0,2*M_PI);
+							0,2*G_PI);
 					break;
 				case MTX_RECTANGLE:
 					cairo_rectangle(cr,
@@ -1113,7 +1106,7 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 							0.0,
 							0.0,
 							1.0,
-							((MtxArc *)poly->data)->start_angle * (M_PI/180.0),(((MtxArc *)poly->data)->sweep_angle+((MtxArc *)poly->data)->start_angle)*(M_PI/180));
+							((MtxArc *)poly->data)->start_angle * (G_PI/180.0),(((MtxArc *)poly->data)->sweep_angle+((MtxArc *)poly->data)->start_angle)*(G_PI/180));
 					if (poly->filled)
 					{
 						cairo_line_to(cr,0,0);
@@ -1191,9 +1184,9 @@ void generate_gauge_background(MtxGaugeFace *gauge)
 		tmpf = (val-priv->lbound)/(priv->ubound-priv->lbound);
 
 		if (priv->rotation == MTX_ROT_CW)
-			tattle_pos = (priv->start_angle+(tmpf*priv->sweep_angle))*(M_PI/180);
+			tattle_pos = (priv->start_angle+(tmpf*priv->sweep_angle))*(G_PI/180);
 		else
-			tattle_pos = ((priv->start_angle+priv->sweep_angle)-(tmpf*priv->sweep_angle))*(M_PI/180);
+			tattle_pos = ((priv->start_angle+priv->sweep_angle)-(tmpf*priv->sweep_angle))*(G_PI/180);
 		if (priv->daytime_mode == MTX_DAY)
 		{
 			cairo_set_source_rgba (cr, priv->colors[GAUGE_COL_NEEDLE_DAY].red/65535.0,

@@ -12,10 +12,9 @@
  * No warranty is made or implied. You use this program at your own risk.
  */
 
-#include <gtk/gtk.h>
-#include <glib.h>
 #include <gauge.h>
-#include <math.h>
+#include <glib.h>
+#include <gtk/gtk.h>
 
 static gboolean
 update( GtkWidget * const gauge );
