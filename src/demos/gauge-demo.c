@@ -49,30 +49,18 @@ int
 
     gtk_widget_show_all (window);
 
-    if (argc < 2)
-    {
-        printf("Using defaults\n");
-        mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),LBOUND, 0.0);
-        mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),UBOUND, 8000.0);
-        mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),ROTATION, MTX_ROT_CW);
-        mtx_gauge_face_set_value (MTX_GAUGE_FACE (gauge), 0.0);
-        mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),START_ANGLE, 135.0);
-        mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),SWEEP_ANGLE, 270.0);
-        mtx_gauge_face_set_attribute(MTX_GAUGE_FACE (gauge), ANTIALIAS, (gfloat)TRUE);
-
-        mtx_gauge_face_set_attribute(MTX_GAUGE_FACE (gauge), PRECISION, (gfloat)1);
-        mtx_gauge_face_set_daytime_mode(MTX_GAUGE_FACE(gauge),MTX_DAY);
-    }
-    else
-    {
-        printf("Attempting to load user specified \"%s\"\n",argv[1]);
-        mtx_gauge_face_import_xml(MTX_GAUGE_FACE(gauge),argv[1]);
-    }
+    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),LBOUND, 0.0);
+    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),UBOUND, 8000.0);
+    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),ROTATION, MTX_ROT_CW);
+    mtx_gauge_face_set_value (MTX_GAUGE_FACE (gauge), 0.0);
+    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),START_ANGLE, 135.0);
+    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),SWEEP_ANGLE, 270.0);
+    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE (gauge), ANTIALIAS, (gfloat)TRUE);
+    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE (gauge), PRECISION, (gfloat)1);
+    mtx_gauge_face_set_daytime_mode(MTX_GAUGE_FACE(gauge),MTX_DAY);
 
     guint const id = g_timeout_add( 20, (GSourceFunc)update, gauge );
     g_assert( id );
-
-    mtx_gauge_face_export_xml(MTX_GAUGE_FACE(gauge),"output2.xml");
 
     mtx_gauge_face_set_show_drag_border (MTX_GAUGE_FACE (gauge), TRUE);
 

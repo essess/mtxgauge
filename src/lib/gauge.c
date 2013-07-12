@@ -30,7 +30,6 @@
 #include <gauge-private.h>
 #include <gtk/gtk.h>
 #include <glib.h>
-#include <glib/gprintf.h>
 #include <glib-object.h>
 #include <math.h>
 #include <string.h>
