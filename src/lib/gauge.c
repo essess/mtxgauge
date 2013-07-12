@@ -1269,9 +1269,9 @@ void mtx_gauge_face_remove_polygon(MtxGaugeFace *gauge, guint index)
  \brief gets called when  a user wants a new gauge
  \returns a pointer to a newly created gauge widget
  */
-GtkWidget *mtx_gauge_face_new (void)
+MtxGaugeFace *mtx_gauge_face_new( void )
 {
-    return GTK_WIDGET (g_object_new (MTX_TYPE_GAUGE_FACE, NULL));
+    return g_object_new( MTX_TYPE_GAUGE_FACE, NULL );
 }
 
 

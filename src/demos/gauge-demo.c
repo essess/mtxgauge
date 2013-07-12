@@ -15,9 +15,10 @@
 #include <gauge.h>
 #include <glib.h>
 #include <gtk/gtk.h>
+#include <stdlib.h>
 
 static gboolean
-update( GtkWidget * const gauge );
+  update( gpointer );
 
 /**
  * notes:
@@ -32,48 +33,43 @@ int
 {
     gtk_init (&argc, &argv);
 
-    GtkWidget * const window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-    g_assert( window );
+    GtkWidget *const w = gtk_window_new( GTK_WINDOW_TOPLEVEL );
+    g_assert( w );
 
-    gtk_widget_set_size_request(GTK_WIDGET(window),240,240);
-    gtk_widget_add_events(GTK_WIDGET(window),
-                          GDK_KEY_PRESS_MASK|GDK_KEY_RELEASE_MASK);
-    gtk_window_set_decorated(GTK_WINDOW(window),FALSE);
+    gtk_widget_set_size_request( w, 240, 240);
+    gtk_widget_add_events( w, GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK );
+    gtk_window_set_decorated( GTK_WINDOW(w), FALSE );
 
-    GtkWidget *const gauge = mtx_gauge_face_new ();
-    g_assert( gauge );
+    MtxGaugeFace *const gf = mtx_gauge_face_new();
+    g_assert( gf );
 
-    gtk_container_add (GTK_CONTAINER (window), gauge);
-    gtk_widget_realize(gauge);
+    gtk_container_add( GTK_CONTAINER(w), GTK_WIDGET(gf) );
+    gtk_widget_realize( GTK_WIDGET(gf) );
 
-    gtk_widget_show_all (window);
+    mtx_gauge_face_set_attribute( gf, LBOUND, 0.0 );
+    mtx_gauge_face_set_attribute( gf,UBOUND, 8000.0 );
+    mtx_gauge_face_set_attribute( gf,ROTATION, MTX_ROT_CW );
+    mtx_gauge_face_set_value ( gf, 0.0 );
+    mtx_gauge_face_set_attribute( gf,START_ANGLE, 135.0 );
+    mtx_gauge_face_set_attribute( gf,SWEEP_ANGLE, 270.0 );
+    mtx_gauge_face_set_attribute( gf, ANTIALIAS, (gfloat)TRUE );
+    mtx_gauge_face_set_attribute( gf, PRECISION, (gfloat)1 );
+    mtx_gauge_face_set_daytime_mode( gf, MTX_DAY );
 
-    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),LBOUND, 0.0);
-    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),UBOUND, 8000.0);
-    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),ROTATION, MTX_ROT_CW);
-    mtx_gauge_face_set_value (MTX_GAUGE_FACE (gauge), 0.0);
-    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),START_ANGLE, 135.0);
-    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE(gauge),SWEEP_ANGLE, 270.0);
-    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE (gauge), ANTIALIAS, (gfloat)TRUE);
-    mtx_gauge_face_set_attribute(MTX_GAUGE_FACE (gauge), PRECISION, (gfloat)1);
-    mtx_gauge_face_set_daytime_mode(MTX_GAUGE_FACE(gauge),MTX_DAY);
-
-    guint const id = g_timeout_add( 20, (GSourceFunc)update, gauge );
+    guint const id = g_timeout_add( 20, update, gf );
     g_assert( id );
 
-    mtx_gauge_face_set_show_drag_border (MTX_GAUGE_FACE (gauge), TRUE);
-
-    g_signal_connect (window, "destroy",
-                      G_CALLBACK (gtk_main_quit), NULL);
-
+    mtx_gauge_face_set_show_drag_border ( gf, TRUE);
+    g_signal_connect( w, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    gtk_widget_show_all( w );
     gtk_main ();
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 static gboolean
-update( GtkWidget * const gauge )
+  update( gpointer p )
 {
-    MtxGaugeFace * const g = MTX_GAUGE_FACE( gauge );
+    MtxGaugeFace *const gf = MTX_GAUGE_FACE( p );
 
     static gfloat lower = 0.0;
     static gfloat upper = 0.0;
@@ -82,10 +78,10 @@ update( GtkWidget * const gauge )
     static gboolean rising = TRUE;
 
     interval = (upper-lower)/100.0;
-    mtx_gauge_face_get_attribute( g, LBOUND, &lower);
-    mtx_gauge_face_get_attribute( g, UBOUND, &upper);
+    mtx_gauge_face_get_attribute( gf, LBOUND, &lower);
+    mtx_gauge_face_get_attribute( gf, UBOUND, &upper);
 
-    mtx_gauge_face_get_value( g, &cur_val);
+    mtx_gauge_face_get_value( gf, &cur_val);
 
     if (cur_val >= upper)
         rising = FALSE;
@@ -97,7 +93,7 @@ update( GtkWidget * const gauge )
     else
         cur_val-=interval;
 
-    mtx_gauge_face_set_value ( g, cur_val);
+    mtx_gauge_face_set_value ( gf, cur_val);
 
     return TRUE;
 }

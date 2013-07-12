@@ -436,7 +436,7 @@ struct _MtxGaugeFaceClass
 GType mtx_gauge_face_get_type (void);
 void generate_gauge_background(MtxGaugeFace *);
 void update_gauge_position (MtxGaugeFace *);
-GtkWidget *mtx_gauge_face_new(void);
+MtxGaugeFace *mtx_gauge_face_new( void );
 
 /* Gauge General Attributes */
 void mtx_gauge_face_set_attribute(MtxGaugeFace *gauge, MtxGenAttr field, gfloat value);
