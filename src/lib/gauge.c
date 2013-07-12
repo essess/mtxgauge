@@ -25,15 +25,11 @@
  *  have come up with!
  */
 
-#include <cairo/cairo.h>
 #include <gauge.h>
 #include <gauge-private.h>
-#include <gtk/gtk.h>
 #include <glib.h>
-#include <glib-object.h>
-#include <math.h>
-#include <string.h>
-#include <time.h>
+#include <gtk/gtk.h>
+#include <cairo/cairo.h>
 
 /**
  * missing prototypes - good indicator that these funcs could
