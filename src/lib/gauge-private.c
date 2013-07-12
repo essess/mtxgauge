@@ -28,10 +28,9 @@
 #include <cairo/cairo.h>
 #include <gauge.h>
 #include <gauge-private.h>
-#include <gauge-xml.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-#include <glib/gprintf.h>
+#include <glib.h>
 #include <glib-object.h>
 #include <math.h>
 #include <string.h>
@@ -153,7 +152,6 @@ void mtx_gauge_face_init (MtxGaugeFace *gauge)
 	mtx_gauge_face_init_default_tick_group(gauge);
 	mtx_gauge_face_init_colors(gauge);
 	mtx_gauge_face_init_name_bindings(gauge);
-	mtx_gauge_face_init_xml_hash(gauge);
 	mtx_gauge_face_redraw_canvas (gauge);
 }
 
@@ -205,33 +203,6 @@ void mtx_gauge_face_init_name_bindings(MtxGaugeFace *gauge)
 	g_object_set_data(G_OBJECT(gauge),"value_str_ypos", &priv->value_ypos);
 	g_object_set_data(G_OBJECT(gauge),"antialias", &priv->antialias);
 	g_object_set_data(G_OBJECT(gauge),"show_value", &priv->show_value);
-}
-
-/*!
- * \brief  initializes and populates the xml_functions hashtable
- */
-void mtx_gauge_face_init_xml_hash(MtxGaugeFace *gauge)
-{
-	gint i = 0;
-	MtxXMLFuncs * funcs = NULL;
-	MtxGaugeFacePrivate *priv = MTX_GAUGE_FACE_GET_PRIVATE(gauge);
-	gint num_xml_funcs = sizeof(xml_functions) / sizeof(xml_functions[0]);
-	priv->xmlfunc_hash = g_hash_table_new_full(g_str_hash,g_str_equal,g_free,g_free);
-
-	priv->xmlfunc_array = g_array_sized_new(FALSE,TRUE,sizeof (MtxXMLFuncs *),num_xml_funcs);
-
-	for (i=0;i<num_xml_funcs;i++)
-	{
-		funcs = g_new0(MtxXMLFuncs, 1);
-		funcs->import_func = xml_functions[i].import_func;
-		funcs->export_func = xml_functions[i].export_func;;
-		funcs->varname = xml_functions[i].varname;
-		funcs->dest_var = (gpointer)g_object_get_data(G_OBJECT(gauge),xml_functions[i].varname);
-		funcs->api_compat = xml_functions[i].api_compat;
-		g_hash_table_insert (priv->xmlfunc_hash,g_strdup(xml_functions[i].varname),funcs);
-		g_array_append_val(priv->xmlfunc_array,funcs);
-	}
-
 }
 
 /*!
